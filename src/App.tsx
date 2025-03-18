@@ -179,24 +179,79 @@
 
 // export default App;
 
-import React from "react";
+// import React from "react";
+// import { Provider } from "react-redux";
+// import store from "./redux/store";
+// import MovieList from "./components/MovieList";
+
+// const App: React.FC = () => {
+//   return (
+//     <Provider store={store}>
+//       <div>
+//         <h1>Movie App</h1>
+//         <MovieList />
+//       </div>
+//     </Provider>
+//   );
+// };
+
+// export default App;
+
+
+
+
+//import React from 'react';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import { ThemeProvider, CssBaseline, Box } from '@mui/material';
+// import { Provider } from 'react-redux';
+// import theme from './styles/theme';
+// import Navbar from './components/Navbar';
+// import store from './redux/store';
+// import Home from './pages/Home';
+// import Search from './pages/Search.tsx';
+
+// function App() {
+//   return (
+//     <Provider store={store}>
+//       <ThemeProvider theme={theme}>
+//         <CssBaseline />
+//         <Router>
+//           <Navbar />
+//           <Box sx={{ mt: 8 }}>
+//             <Routes>
+//               <Route path="/" element={<Home />} />
+//               <Route path="/search" element={<Search />} />
+//             </Routes>
+//           </Box>
+//         </Router>
+//       </ThemeProvider>
+//     </Provider>
+//   );
+// }
+
+// export default App;
+
+
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import MovieList from "./components/MovieList";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import Search from "./pages/Search";
 
 const App: React.FC = () => {
   return (
     <Provider store={store}>
-      <div>
-        <h1>Movie App</h1>
-        <MovieList />
-      </div>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
+        </Routes>
+      </Router>
     </Provider>
   );
 };
 
 export default App;
-
-
-
-
