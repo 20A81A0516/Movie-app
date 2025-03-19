@@ -233,25 +233,61 @@
 
 
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Provider } from "react-redux";
-import store from "./redux/store";
-import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import Search from "./pages/Search";
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import { Provider } from "react-redux";
+// import store from "./redux/store";
+// import Navbar from "./components/Navbar";
+// import Home from "./pages/Home";
+// import Search from "./pages/Search";
 
-const App: React.FC = () => {
+// const App: React.FC = () => {
+//   return (
+//     <Provider store={store}>
+//       <Router>
+//         <Navbar />
+//         <Routes>
+//           <Route path="/" element={<Home />} />
+//           <Route path="/search" element={<Search />} />
+//         </Routes>
+//       </Router>
+//     </Provider>
+//   );
+// };
+
+// export default App;
+
+
+
+
+import { ThemeProvider, CssBaseline, Box } from '@mui/material';
+import theme from './styles/theme';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import { Provider } from 'react-redux';
+import  store  from './redux/store';
+import { Route, Routes } from 'react-router-dom';
+import Search from './pages/Search';
+import { BrowserRouter } from 'react-router-dom'; 
+import Watchlist from './pages/WatchList';
+
+function App() {
   return (
-    <Provider store={store}>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/search" element={<Search />} />
-        </Routes>
-      </Router>
+    <Provider store={store}>   
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <BrowserRouter>  {/* Wrap with BrowserRouter */}
+          <Navbar />
+          <Box sx={{ mt: 2 }}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/watchlist" element={<Watchlist />} />
+            </Routes>
+          </Box>
+        </BrowserRouter>
+      </ThemeProvider>
     </Provider>
   );
-};
+}
 
 export default App;
